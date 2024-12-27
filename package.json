@@ -12,7 +12,6 @@
     "start": "nest start",
     "start:auth": "nest start auth",
     "start:app": "nest start app",
-    "start:prod": "node dist/apps/app/main.js",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "dependencies": {
