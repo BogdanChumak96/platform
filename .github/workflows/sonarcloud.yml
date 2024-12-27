@@ -9,7 +9,7 @@ on:
 
 permissions:
   pull-requests: read
-  contents: write
+  contents: write 
 
 jobs:
   Analysis:
@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "SONAR_PROJECT_KEY=${{ secrets.SONAR_PROJECT_KEY }}"
           echo "SONAR_ORGANIZATION=${{ secrets.SONAR_ORGANIZATION }}"
-          echo "SONAR_TOKEN is set" # To avoid exposing the token value, just confirm it's set
+          echo "SONAR_TOKEN is set"
         env:
           SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
           SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
@@ -37,3 +37,4 @@ jobs:
           args: |
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+          projectBaseDir: .
