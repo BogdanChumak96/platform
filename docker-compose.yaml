@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: apps/app/Dockerfile
+    command: npm run start:app
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - mongo
+  auth:
+    build:
+      context: .
+      dockerfile: apps/auth/Dockerfile
+      target: development
+    command: npm run start:auth
+    env_file:
+      - apps/auth/.env
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/usr/src/app
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - '27017:27017'
