@@ -27,6 +27,8 @@ jobs:
           args: |
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
-            -Dsonar.exclusions=**/*.dto.ts,**/*.guard.ts
-            -Dsonar.test.exclusions=**/*.dto.ts,**/*.guard.ts
+            -Dsonar.exclusions=**/*.dto.ts,**/*.guard.ts,**/*.spec.ts
+            -Dsonar.issue.ignore.multicriteria=e1
+            -Dsonar.issue.ignore.multicriteria.e1.ruleKey=typescript:S2068
+            -Dsonar.issue.ignore.multicriteria.e1.resourceKey=**/*.spec.ts
           projectBaseDir: .
